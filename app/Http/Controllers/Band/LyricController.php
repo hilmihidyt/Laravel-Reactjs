@@ -48,7 +48,20 @@ class LyricController extends Controller
 
     public function dataTable()
     {
-        $lyrics = Lyric::latest()->paginate(2);
+        $bandId = request('band_id');
+        $albumId = request('album_id');
+
+        if ($bandId && !$albumId) {
+           $lyrics = Lyric::where('band_id', $bandId)->latest()->get();
+        } elseif($bandId && $albumId) {
+            $lyrics = Lyric::where([
+                ['band_id', $bandId],
+                ['album_id', $albumId]
+            ])->latest()->get();
+        } else {
+            $lyrics = Lyric::latest()->paginate(2);
+        }
+
         return LyricResource::collection($lyrics);
     }
 }

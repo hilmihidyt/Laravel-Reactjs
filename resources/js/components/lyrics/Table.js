@@ -7,10 +7,12 @@ function DataTable(props) {
 
     const [lyrics, setLyrics] = useState([])
     const [url, setUrl] = useState(props.endpoint)
+    const [links, setLinks] = useState([]);
     const getLyrics = async () => {
         try { 
             let response = await axios.get(url);
             setLyrics(response.data.data);
+            setLinks(response.data.meta.links)
         } catch(e) {
             console.log(e.message);
         }
@@ -18,7 +20,7 @@ function DataTable(props) {
 
     useEffect(() => {
         getLyrics()
-    })
+    },[url])
     return (
         <div className="card">
             <div className="card-header">{props.title}</div>
@@ -47,6 +49,19 @@ function DataTable(props) {
                         }
                     </tbody>
                 </table>
+                <nav aria-label="Page navigation example">
+                <ul className="pagination">
+                    {
+                        links.map((link, index) => {
+                            return (
+                                <li key={index} className={`page-item ${link.active ? 'active' : ''}`}>
+                                    <button onClick={(e) => setUrl(link.url)} className="page-link">{link.label}</button>
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
+                </nav>
             </div>
         </div>
     );

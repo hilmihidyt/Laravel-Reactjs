@@ -25,3 +25,11 @@
     <a href="{{ route('albums.table') }}" class="list-group-item list-group-item-action">Table</a>
     </div>
 </div>
+
+<div class="mb-4">
+    <small class="text-secondary d-block mb-2">Lyrics</small>
+    <div class="list-group">
+    <a href="{{ route('lyrics.create') }}" class="list-group-item list-group-item-action">Create</a>
+    <a href="{{ route('lyrics.table') }}" class="list-group-item list-group-item-action">Table</a>
+    </div>
+</div>

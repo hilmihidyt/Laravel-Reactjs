@@ -63,6 +63,12 @@ class AlbumController extends Controller
         return redirect()->route('albums.table')->with('success','Album was updated');
     }
 
+
+    public function getAlbumsByBandId(Band $band)
+    {
+        return $band->albums;
+    }
+
     public function destroy(Album $album)
     {
         $album->delete();

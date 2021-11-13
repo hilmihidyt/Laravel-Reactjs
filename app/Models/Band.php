@@ -20,4 +20,9 @@ class Band extends Model
     {
         return $this->belongsToMany(Genre::class);
     }
+
+    public function lyrics()
+    {
+        return $this->hasMany(Lyric::class);
+    }
 }

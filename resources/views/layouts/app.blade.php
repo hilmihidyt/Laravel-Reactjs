@@ -5,10 +5,10 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 @endsection
 
-@push('baseScripts')
+@section('baseScripts')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-@endpush
+@endsection
 
 @section('body')
     <x-navbar></x-navbar>

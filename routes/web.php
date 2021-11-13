@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{DashboardController, HomeController};
+use App\Http\Controllers\Band\BandController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,4 +21,9 @@ Auth::routes();
 Route::get('/', HomeController::class)->name('home');
 Route::middleware('auth')->group(function () {
     Route::get('dashboard',DashboardController::class)->name('dashboard');
+
+    Route::prefix('bands')->group(function () {
+        Route::get('create',[BandController::class,'create'])->name('bands.create');
+        Route::post('create',[BandController::class,'store']);
+    });
 });

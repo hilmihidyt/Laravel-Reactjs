@@ -12,7 +12,7 @@ class AlbumController extends Controller
     public function table()
     {
         return view('albums.table',[
-            'albums' => Album::paginate(16),
+            'albums' => Album::with('band')->paginate(16),
             'title' => 'Albums'
         ]);
     }

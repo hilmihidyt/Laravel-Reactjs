@@ -29,7 +29,7 @@ class GenreController extends Controller
     public function table()
     {
         return view('genres.table',[
-            'genres' => Genre::paginate(12),
+            'genres' => Genre::withCount('bands')->latest()->paginate(12),
             'title' => "Genres"
         ]);
     }

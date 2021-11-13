@@ -11,9 +11,9 @@
                 <th>Action</th>
             </thead>
             <tbody>
-                @foreach ($albums as $album)
+                @foreach ($albums as $key => $album)
                 <tr>
-                    <td>{{ $albums->count() * ($albums->currentPage() - 1) + $loop->iteration }}</td>
+                    <td>{{ $albums->firstItem() + $key}}</td>
                     <td>{{ $album->name }}</td>
                     <td>{{ $album->band->name }}</td>
                     <td>

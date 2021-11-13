@@ -16,6 +16,13 @@ class Band extends Model
         return $this->hasMany(Album::class);
     }
 
+    public function album()
+    {
+        return $this->hasOne(Album::class)->latest();
+    }
+
+
+
     public function genres()
     {
         return $this->belongsToMany(Genre::class);
@@ -24,5 +31,10 @@ class Band extends Model
     public function lyrics()
     {
         return $this->hasMany(Lyric::class);
+    }
+
+    public function getPictureAttribute()
+    {
+        return asset('storage/'. $this->thumbnail);
     }
 }

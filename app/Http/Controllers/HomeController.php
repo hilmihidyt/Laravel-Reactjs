@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Band;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -9,6 +10,9 @@ class HomeController extends Controller
 
     public function __invoke()
     {
-        return view('home');
+
+        return view('home',[
+            'bands' => Band::with('album')->paginate(9)
+        ]);
     }
 }

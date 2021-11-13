@@ -58,5 +58,6 @@ Route::middleware('auth')->group(function () {
         Route::get('{lyric:slug}',[LyricController::class,'show'])->name('lyrics.show');
         Route::get('{lyric:slug}/edit',[LyricController::class,'edit'])->name('lyrics.edit');
         Route::put('{lyric:slug}',[LyricController::class,'update']);
+        Route::delete('{lyric:slug}/delete',[LyricController::class,'destroy'])->name('lyrics.delete');
     });
 });

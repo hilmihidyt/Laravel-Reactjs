@@ -100,4 +100,10 @@ class LyricController extends Controller
 
         return response()->json(['message' => 'The lyrics was updated into band ' . $band->name]);
     }
+
+    public function destroy(Lyric $lyric)
+    {
+        $lyric->delete();
+
+    }
 }

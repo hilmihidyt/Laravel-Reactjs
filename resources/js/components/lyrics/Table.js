@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import swal from 'sweetalert';
+import Remove from '../Delete';
 
 function DataTable(props) {
 
@@ -89,8 +90,11 @@ function DataTable(props) {
                                                 <td>{lyric.title}</td>
                                                 <td>{lyric.band}</td>
                                                 <td>{lyric.album}</td>
-                                                <td>
-                                                    <a href={`/lyrics/${lyric.slug}/edit`}>Edit</a>
+                                                <td className="d-flex align-items-center">
+                                                    <a href={`/lyrics/${lyric.slug}/edit`} className="btn btn-success btn-sm mr-2">Edit</a>
+                                                    <div>
+                                                        <Remove endpoint={`/lyrics/${lyric.slug}/delete`}/>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         )

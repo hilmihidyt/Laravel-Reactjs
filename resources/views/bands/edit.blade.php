@@ -7,7 +7,6 @@
 </script>
 @endpush
 @section('content')
-@include('alert')
 <div class="card">
     <div class="card-header">
         New Band

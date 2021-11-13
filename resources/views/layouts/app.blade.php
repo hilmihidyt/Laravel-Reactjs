@@ -15,4 +15,9 @@
     <div class="mt-4">
         @yield('content')
     </div>
+    <footer class="mt-5 border-top py-5">
+        <div class="container">
+            Lorem
+        </div>
+    </footer>
 @endsection

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Band;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Band\AlbumRequest;
 use App\Models\{Album, Band};
+use Illuminate\Http\Request;
 
 class AlbumController extends Controller
 {
@@ -25,14 +27,8 @@ class AlbumController extends Controller
         ]);
     }
 
-    public function store()
+    public function store(AlbumRequest $request)
     {
-        request()->validate([
-            'name' => 'required|unique:albums,name',
-            'band' => 'required',
-            'year' => 'required'
-        ]);
-
         $band = Band::find(request('band'));
 
         Album::create([
@@ -55,14 +51,8 @@ class AlbumController extends Controller
         ]);
     }
 
-    public function update(Album $album)
+    public function update(AlbumRequest $request , Album $album)
     {
-        request()->validate([
-            'name' => 'required|unique:albums,name,' . $album->id,
-            'band' => 'required',
-            'year' => 'required'
-        ]);
-
         $album->update([
             'name' => request('name'),
             'slug' => \Str::slug(request('name')),

@@ -56,4 +56,13 @@ class GenreController extends Controller
     {
         $genre->delete();
     }
+
+    public function show(Genre $genre)
+    {
+        return view('genres.show',[
+            'title' => "{$genre->name}",
+            'genre' => $genre,
+            'bands' => $genre->bands()->latest()->paginate(2)
+        ]);
+    }
 }
